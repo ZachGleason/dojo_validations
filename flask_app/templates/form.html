@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Dojo Survey</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="form">
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+        {% endwith %}
+        <form action="/create" method="post">
+            <h1 id="header">Dojo Survey</h1>
+            <div id="name">
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+            </div>
+            <div id="location">
+            <label for="location">Dojo Location:</label>
+            <select name="location" id="">
+                <option value="Chicago">Chicago</option>
+                <option value="Seattle">Seattle</option>
+                <option value="San Jose">San Jose</option>
+                <option value="Remote">Remote</option>
+            </select>
+            </div>
+            <div id="language">
+            <label for="language">Favorite Language:</label>
+            <select name="language" id="">
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="C++">C++</option>
+                <option value="Java">Java</option>
+                <option value="HTML">HTML</option>
+            </select>
+            </div>
+            <div id="comment">
+            <label for="comment">Comments:</label>
+            <input type="text" name="comment" id="commentbox">
+            </div>
+            <div>
+            <button value="submit" id="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

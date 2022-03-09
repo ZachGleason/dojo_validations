@@ -1,0 +1,45 @@
+#results {
+
+}
+
+#form {
+    height: 450px;
+    width: 300px;
+    margin: auto;
+    border: 1px solid black;
+    background-color:beige;
+}
+#header {
+    text-align: center;
+}
+
+#name {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#location {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#language {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#comment {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#submit{   
+    margin-top: 50px;
+    margin-left: 120px;
+}
+
+
+#commentbox {
+    height: 75px;
+    width: 250px;
+}
