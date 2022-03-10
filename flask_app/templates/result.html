@@ -9,13 +9,11 @@
 </head>
 <body>
     <div id="results">
-    {% for dojo in dojos %}
-        <h1>Submitted Info</h1>
+        <h1>Submitted Info </h1>
         <p>Name: {{ dojo.name }}</p>
         <p>Dojo Location: {{ dojo.location }}</p>
         <p>Favorite Language: {{ dojo.language }}</p>
         <p>Comments: {{ dojo.comment }}</p>
-    {% endfor %}
     </div>
 </body>
 </html>

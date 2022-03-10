@@ -9,39 +9,34 @@ class Dojo:
         self.location = data["location"]
         self.language = data["language"]
         self.comment = data["comment"]
-        self.dojo = []
+        # self.dojo = []
 
 
     @classmethod
     def save(cls,data):
         query = "INSERT INTO dojos (name, location, language, comment) VALUES (%(name)s, %(location)s, %(language)s, %(comment)s);"
         results = connectToMySQL(cls.db).query_db(query, data)
-        # dojo = cls(results[0])
-        # for row in results:
-        #     n = {
-        #         'name': row['dojo.name'],
-        #         'location': row['dojo.location'],
-        #         'language': row['dojo.language'],
-        #         'comment': row['dojo.comment']
-        #     }
-        #     dojo.append(Dojo(n))
-        # return dojo
 
     @classmethod
-    def get_one(cls, data):
-        query = "SELECT * FROM dojos WHERE id = %(id)s;"
-        results = connectToMySQL(cls.db).query_db(query, data)
-        if len(results) < 1:
-            return False
-        return cls(results[0])
+    def get_by_id(cls, data):
+        query = "SELECT * FROM dojos WHERE id = %(id)s"
+        results = connectToMySQL('dojo_survey_schema').query_db(query, data)
+        print(results)
+        return Dojo(results[0])
 
     @staticmethod
-    def validate_dojo(dojo):
-        is_valid = True 
-        if len(dojo['name']) < 3:
-            flash("Name must be at least 3 characters.")
+    def is_valid(dojo):
+        is_valid = True
+        if len(dojo['name']) < 2:
             is_valid = False
+            flash("Name must be at least 2 characters.")
+        if len(dojo['location']) < 1:
+            is_valid = False
+            flash("A location must be selected.")
+        if len(dojo['language']) < 1:
+            is_valid = False
+            flash("A language must be selected.")
         if len(dojo['comment']) < 3:
-            flash("Comment must be at least 3 characters.")
             is_valid = False
+            flash("Comments must be at least 3 characters.")
         return is_valid
