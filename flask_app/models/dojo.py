@@ -15,12 +15,12 @@ class Dojo:
     @classmethod
     def save(cls,data):
         query = "INSERT INTO dojos (name, location, language, comment) VALUES (%(name)s, %(location)s, %(language)s, %(comment)s);"
-        results = connectToMySQL(cls.db).query_db(query, data)
+        return connectToMySQL(cls.db).query_db( query, data )
 
     @classmethod
     def get_by_id(cls, data):
         query = "SELECT * FROM dojos WHERE id = %(id)s"
-        results = connectToMySQL('dojo_survey_schema').query_db(query, data)
+        results = connectToMySQL(cls.db).query_db(query, data)
         print(results)
         return Dojo(results[0])
 

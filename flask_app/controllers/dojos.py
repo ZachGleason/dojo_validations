@@ -35,11 +35,11 @@ def submit():
     }
     new_dojo_id = Dojo.save(data)
     print(new_dojo_id)
-    return redirect(f'/display/{new_dojo_id}',)
+    return redirect(f'/display/{new_dojo_id}')
 
 @app.route('/display/<int:id>')
 def display(id):
     data = {
         "id": id
     }
-    return render_template("results.html", dojo = Dojo.get_by_id(data))
+    return render_template("result.html", dojo = Dojo.get_by_id(data))
